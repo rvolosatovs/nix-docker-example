@@ -1,0 +1,24 @@
+{
+    "packages": [
+        {
+            "name": "go"
+        },
+        {
+            "name": "python"
+        }
+    ],
+    "services": [
+        {
+            "name": "redis",
+            "config": {
+                "port": 42
+            }
+        },
+        {
+            "name": "nginx",
+            "config": {
+                "port": 43
+            }
+        }
+    ]
+}
