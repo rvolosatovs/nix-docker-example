@@ -1,17 +1,39 @@
 # Build docker images with Nix
 
 ```sh
-$ nix build '.#golangWithPython'
+$ nix build '.#golang.v1_17-alpine' # this requires nix 2.0 with flake support
+copying path '/nix/store/0vjrqagcfibkbw4hgfj4v3r3bz1mbiai-dash-0.5.11.4' from 'https://cache.nixos.org'...
+building '/nix/store/fzas433vx0iyydmlz95kqf5rq697bqcn-golang-base.json.drv'...
+copying path '/nix/store/gdf9hclwkm5ngzn6xxhlkjdgw0cbh1r8-python3.9-mccabe-0.6.1' from 'https://cache.nixos.org'...
+copying path '/nix/store/zpgf00qiawbw60fnyw7xc27lq60gl9sr-python3.9-pycodestyle-2.7.0' from 'https://cache.nixos.org'...
+copying path '/nix/store/2lmz1qxxbfp6g00w5c6mhmwr8fbpblj1-python3.9-pyflakes-2.3.1' from 'https://cache.nixos.org'...
+copying path '/nix/store/wnrabg39ywjpf7d54mz9xy8x1401n6sj-fakeroot-1.23' from 'https://cache.nixos.org'...
+building '/nix/store/q7vmsxwmfpssk5q492ni175wjdbqbk16-closure.drv'...
+building '/nix/store/4hcy35sk9bn35h188gzhppgbwmkfqn6a-golang-customisation-layer.drv'...
+copying path '/nix/store/6mjaw31jgi0964wacjwc4sz7iz57skdk-python3.9-flake8-3.9.2' from 'https://cache.nixos.org'...
+building '/nix/store/6k8vrjq6sb7alhw5fxym6xib77l63z1q-closure-paths.drv'...
+building '/nix/store/kbb047az4h8wq281h9mz91wyp6jflwjw-python2check.sh.drv'...
+building '/nix/store/5xiy7q2ibzkq76lb2by2kn3h719g6vx2-stream.drv'...
+building '/nix/store/ply0cb5q5i57262h6gs33m8banm4dc9i-golang-conf.json.drv'...
+building '/nix/store/wljnnaa604zxr881liqs3zmfjizc5zlw-stream-golang.drv'...
+building '/nix/store/zghs7q7pxnhwjy8x95dgj590r19s8111-golang.tar.gz.drv'...
 $ docker load < result
-b61571a594e1: Loading layer [==================================================>]  1.337GB/1.337GB
-Loaded image: golang-with-python:latest
-$ docker run --rm -it golang-with-python go version
+86c30c690cfe: Loading layer [==================================================>]  1.649MB/1.649MB
+51600a72382d: Loading layer [==================================================>]    297kB/297kB
+82ab3a41ddef: Loading layer [==================================================>]  31.85MB/31.85MB
+260ad79e2906: Loading layer [==================================================>]  102.4kB/102.4kB
+cfa039c5d710: Loading layer [==================================================>]  133.1kB/133.1kB
+0365519565c5: Loading layer [==================================================>]  1.894MB/1.894MB
+f28a8d320e0a: Loading layer [==================================================>]  1.352MB/1.352MB
+067ba202c78e: Loading layer [==================================================>]  573.4kB/573.4kB
+31033b4fd2c0: Loading layer [==================================================>]  122.9kB/122.9kB
+30decbcaa828: Loading layer [==================================================>]  57.34MB/57.34MB
+be4bbadb53af: Loading layer [==================================================>]  2.785MB/2.785MB
+b167b894b956: Loading layer [==================================================>]  458.4MB/458.4MB
+d335cd164fe4: Loading layer [==================================================>]  8.561MB/8.561MB
+Loaded image: golang:1.17-alpine
+$ docker run --rm -it golang:1.17-alpine apk --version
+apk-tools 2.12.7, compiled for x86_64.
+$ docker run --rm -it golang:1.17-alpine go version
 go version go1.17.1 linux/amd64
-$ docker run --rm -it golang-with-python python    
-Python 2.7.18 (default, Apr 19 2020, 21:45:35) 
-[GCC 10.3.0] on linux2
-Type "help", "copyright", "credits" or "license" for more information.
->>> import numpy as np
->>> np.array([2, 3, 4])
-array([2, 3, 4])
 ```
