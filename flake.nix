@@ -1,5 +1,5 @@
 {
-  description = "Build OCI images";
+  description = "Build Docker images";
 
   inputs.nixpkgs.url = github:rvolosatovs/nixpkgs;
 
