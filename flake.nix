@@ -32,20 +32,20 @@
         golang = rec {
           latest = v1_17;
 
-          v1_17 = dockerTools.buildImage {
+          v1_17 = dockerTools.buildLayeredImage {
             name = "golang";
             tag = "1.17";
             contents = go_1_17;
           };
 
-          v1_17-alpine = dockerTools.buildImage {
+          v1_17-alpine = dockerTools.buildLayeredImage {
             name = "golang";
             tag = "1.17-alpine";
             fromImage = alpine;
             contents = go_1_17;
           };
 
-          v1_17-windowsservercore-ltsc2022 = dockerTools.buildImage {
+          v1_17-windowsservercore-ltsc2022 = dockerTools.buildLayeredImage {
             name = "golang";
             tag = "1.17-windowsservercore-ltsc2022";
             fromImage = windows-server-core-ltsc2022;
